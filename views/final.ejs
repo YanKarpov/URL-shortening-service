@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Сокращённый URL</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 300px;
+    }
+    h1 {
+      text-align: center;
+      font-size: 24px;
+    }
+    p {
+      text-align: center;
+      font-size: 18px;
+      color: #555;
+    }
+    a {
+      display: block;
+      text-align: center;
+      font-size: 18px;
+      color: #4CAF50;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Ссылка сокращена!</h1>
+    <p>Оригинальная ссылка: <a href="<%= originalUrl %>" target="_blank"><%= originalUrl %></a></p>
+    <p>Сокращённая ссылка: <a href="http://localhost:3000/<%= shortUrl %>">http://localhost:3000/<%= shortUrl %></a></p>
+  </div>
+
+</body>
+</html>
