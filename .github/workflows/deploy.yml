@@ -1,0 +1,27 @@
+name: "Deploy to remote VPS by SSH"
+
+on:
+  workflow.dispatch:
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    name: publish to github registry
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+    - name: multiple command
+      uses: appleboy/ssh-action@v1.2.0
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.KEY }}
+        port: ${{ secrets.PORT }}
+        script: |
+        cd /root/URL-SERVICE/URL-shortening-service
+        git pull
+        npm ci
+        docker-compose up
