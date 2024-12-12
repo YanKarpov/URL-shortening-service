@@ -24,4 +24,4 @@ jobs:
           cd /root/URL-SERVICE/URL-shortening-service
           git pull
           npm ci
-          docker-compose up
+          docker-compose up -d 
