@@ -21,7 +21,7 @@ jobs:
         password: ${{ secrets.SSH_PASSWORD }}
         port: 22
         script: |
-        cd /root/URL-SERVICE/URL-shortening-service
-        git pull
-        npm ci
-        docker-compose up
+          cd /root/URL-SERVICE/URL-shortening-service
+          git pull
+          npm ci
+          docker-compose up
