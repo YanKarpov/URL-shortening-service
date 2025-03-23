@@ -1,27 +1,9 @@
 const express = require("express");
-const { createClient } = require("redis");
 const path = require("path");
+const redisClient = require("./config/redis"); // Новый импорт
 
 const app = express();
 const port = 3000;
-
-const redisClient = createClient({
-  url: "redis://my_redis:6379",
-});
-
-redisClient.on("error", (err) => {
-  console.error("Ошибка подключения к Redis:", err);
-});
-
-(async () => {
-  try {
-    await redisClient.connect();
-    console.log("Подключено к Redis");
-  } catch (err) {
-    console.error("Ошибка при подключении к Redis:", err);
-    process.exit(1);
-  }
-})();
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -34,9 +16,8 @@ function generateShortUrl() {
     const date = localDate.toISOString().split('T')[0].replace(/-/g, ''); 
     const time = localDate.getHours().toString().padStart(2, '0') + localDate.getMinutes().toString().padStart(2, '0'); 
     return date + '-' + time;
-  }
-  
-  
+}
+
 app.get("/", (req, res) => {
   res.render("index");
 });
