@@ -1,6 +1,6 @@
 const express = require("express");
 const path = require("path");
-const redisClient = require("./config/redis"); // Новый импорт
+const { createShortUrl, getOriginalUrl } = require("./services/Urlservice"); 
 
 const app = express();
 const port = 3000;
@@ -29,10 +29,8 @@ app.post("/create", async (req, res) => {
     return res.status(400).send("URL не указан");
   }
 
-  const shortUrl = generateShortUrl();
-
   try {
-    await redisClient.set(shortUrl, originalUrl);
+    const shortUrl = await createShortUrl(originalUrl, generateShortUrl);
     res.render("final", { shortUrl, originalUrl });
   } catch (err) {
     console.error("Ошибка при сохранении URL:", err);
@@ -44,7 +42,7 @@ app.get("/:shortUrl", async (req, res) => {
   const shortUrl = req.params.shortUrl;
 
   try {
-    const originalUrl = await redisClient.get(shortUrl);
+    const originalUrl = await getOriginalUrl(shortUrl);
 
     if (!originalUrl) {
       return res.status(404).send("Сокращённый URL не найден");
