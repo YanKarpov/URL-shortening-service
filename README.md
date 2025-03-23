@@ -19,7 +19,7 @@
 
 1. Клонируйте репозиторий:
    ```bash
-   git clone https://github.com/URL-shortening-service.git
+   git clone https://github.com/YanKarpov/URL-shortening-service.git
    cd URL-shortening-service
 
 2. Соберите и запустите контейнеры:
