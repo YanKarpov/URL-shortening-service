@@ -1,6 +1,6 @@
 const express = require("express");
 const path = require("path");
-const { createShortUrl, getOriginalUrl } = require("./services/Urlservice"); 
+const { createShortUrl, getOriginalUrl } = require("./services/UrlService.js"); 
 
 const app = express();
 const port = 3000;
