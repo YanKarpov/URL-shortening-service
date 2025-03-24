@@ -1,0 +1,18 @@
+const IStorageService = require("./IStorageService");
+
+class InMemoryStorageService extends IStorageService {
+    constructor() {
+        super();
+        this.storage = new Map();
+    }
+
+    async save(shortUrl, originalUrl) {
+        this.storage.set(shortUrl, originalUrl);
+    }
+
+    async get(shortUrl) {
+        return this.storage.get(shortUrl) || null;
+    }
+}
+
+module.exports = new InMemoryStorageService();

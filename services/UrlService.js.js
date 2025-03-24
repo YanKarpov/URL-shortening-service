@@ -1,8 +1,10 @@
-const storageService = require("./StorageService");
+const storageService = require("./RedisStorageService");
+const storageService = require("./InMemoryStorageService");
+
 
 async function createShortUrl(originalUrl, generateShortUrl) {
   const shortUrl = generateShortUrl();
-  await storageService.set(shortUrl, originalUrl);
+  await storageService.save(shortUrl, originalUrl);
   return shortUrl;
 }
 
