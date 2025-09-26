@@ -7,7 +7,7 @@ describe('URL Shortener API Tests via Docker', () => {
   it('Создание короткой ссылки с валидным URL', async () => {
     const res = await request(baseUrl)
       .post('/create')
-      .type('form')        // ⚡ важно
+      .type('form')        
       .send({ url: 'https://example.com' });
     expect(res.statusCode).toBe(200);
     expect(res.text).toMatch(/\d{8}-\d{4}/); // формат YYYYMMDD-HHMM
