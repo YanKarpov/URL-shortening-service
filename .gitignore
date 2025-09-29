@@ -6,3 +6,7 @@ logs/
 .env
 
 package-lock.json
+
+allure-results/
+allure-report/
+.allure/

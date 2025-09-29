@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "allure:report": "allure generate allure-results --clean -o allure-report && allure open allure-report"
   },
   "keywords": [],
   "author": "",
@@ -16,7 +17,9 @@
     "redis": "^4.7.0"
   },
   "devDependencies": {
+    "allure-jest": "^3.4.1",
     "jest": "^30.1.3",
+    "jest-environment-node": "^30.2.0",
     "supertest": "^7.1.4"
   }
 }
