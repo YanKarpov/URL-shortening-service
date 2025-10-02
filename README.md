@@ -67,9 +67,10 @@ docker-compose up --build -d
 npm install
 ```
 
-### 3. Запуск тестов
+### 3. Запуск тестов || Интеграция с allure
 ```bash
 npm test
+npm run allure:report
 ```
 
 
